@@ -2,7 +2,7 @@ const fs = require('fs-extra');
 const Promise = require('bluebird');
 const { Readable } = require("stream");
 
-exports =  function read(filename,option) {
+exports.read =  async function (filename,option) {
 
   const streamtoRead=fs.createReadStream(filename,'utf-8')
     const chunks = [];
@@ -13,7 +13,7 @@ exports =  function read(filename,option) {
     }).then(data=> JSON.parse(data)).catch(data=>data=undefined)
   }
 
-exports = function write(fileName,data,option) {
+exports.write = async function (fileName,data,option) {
   option = !option?'utf-8':option;  
   await new Promise((resolve, reject) => {
       const readable = Readable.from(JSON.stringify(data))
