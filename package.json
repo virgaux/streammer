@@ -1,0 +1,12 @@
+{
+  "name": "streammer",
+  "version": "1.0.0",
+  "description": "Using stream method for reading and writing JSON file.",
+  "main": "Streammer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "virgaux",
+  "license": "ISC"
+}
