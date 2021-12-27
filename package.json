@@ -1,6 +1,6 @@
 {
   "name": "streammer",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Using stream method for reading and writing JSON file.",
   "main": "Streammer.js",
   "scripts": {
