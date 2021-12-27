@@ -3,8 +3,8 @@ const Promise = require('bluebird');
 const { Readable } = require("stream");
 
 exports.read =  async function (filename,option) {
-
-  const streamtoRead=fs.createReadStream(filename,'utf-8')
+  option = !option?'utf-8':option; 
+  const streamtoRead=fs.createReadStream(filename,option)
     const chunks = [];
     return await new Promise((resolve, reject) => {
       streamtoRead.on('data', (chunk) => chunks.push(Buffer.from(chunk)));
