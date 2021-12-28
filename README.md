@@ -1,10 +1,10 @@
 # streammer
-Using stream method for reading and writing JSON file 
+Using stream method for reading and writing file into readable string/array. 
 
 
 
-- Application:
-```
+- # Application:
+```js
 const stmr = require("streammer") 
 
 data = stmr.read(path,option) // to read as json file from stream method into readable string/array
