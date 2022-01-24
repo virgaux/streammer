@@ -25,3 +25,22 @@ exports.write = async function (fileName,data,option) {
       })
     }); 
   }
+
+  exports.writeFile = async (file, data, callback)=>{
+    return fs.writeFile(file, data, callback)
+  }
+  exports.pathExists = async (file, callback)=>{
+    return fs.pathExists(file, callback)
+  }
+  exports.ensureFile = async (file, callback)=>{
+    return fs.ensureFile(file, callback)
+  }
+  exports.readFile = async (file, encoding, callback)=>{
+    return fs.readFile(file, encoding, callback)
+  }
+  exports.readJson = async (file, option, callback)=>{
+    return fs.readJson(file, option, callback)
+  }
+  exports.writeJson = async (file, object, options)=>{
+    return fs.writeJson(file, object, options)
+  }
