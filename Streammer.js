@@ -13,16 +13,17 @@ exports.read =  async function (filename,option) {
     }).then(data=> JSON.parse(data)).catch(data=>data=undefined)
   }
 
-exports.write = async function (fileName,data,option) {
-  option = !option?'utf-8':option;  
-  await new Promise((resolve, reject) => {
-      const readable = Readable.from(JSON.stringify(data))
-      const writemyStream = fs.createWriteStream(fileName,option); 
-      readable.on("data", (chunk) => writemyStream.write(chunk))
-      readable.on("end", () => {
-      writemyStream.on('finish', () => resolve()).on('error', reject);
-      writemyStream.end();
-      })
+exports.write = async function (fileName,data,options) {
+  var options = !options ? { highWaterMark: 10000 } : options;
+    await new Promise((resolve, reject) => {
+        const readable = Readable.from(JSON.stringify(data), { highWaterMark: 10000 })
+        const writemyStream = fs.createWriteStream(fileName, options);
+        readable.on("data", (chunk) => writemyStream.write(chunk))
+        writemyStream.on('drain', () => readable.resume());
+        readable.on("end", () => {
+            writemyStream.on('finish', () => resolve()).on('error', reject);
+            writemyStream.end();
+        })
     }); 
   }
 
