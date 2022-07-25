@@ -10,7 +10,10 @@ exports.read =  async function (filename,option) {
       streamtoRead.on('data', (chunk) => chunks.push(Buffer.from(chunk)));
       streamtoRead.on('error', (err) => reject(err));
       streamtoRead.on('end', () => resolve(Buffer.concat(chunks).toString('utf8')));
-    }).then(data=> JSON.parse(data)).catch(data=>data=undefined)
+    }).then(data=> JSON.parse(data)).catch(data=>{
+      console.log(data)
+      return undefined
+    })
   }
 
 exports.write = async function (fileName,data,options) {
